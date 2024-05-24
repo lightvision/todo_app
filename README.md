@@ -7,9 +7,12 @@ Aplicațiile se încarcă cel mai tarziu cu 3 zile inainte de examen, în Assigm
 
 Atenție:  Media finală acordată fiecărui student va conţine următoarele componente, conform procentelor: examen final 60%; proiect 20%; teme pe parcursul orelor 20%.
 
-# Analiza cerintelor
+# Analiza cerintelor si obiective
+
 
 # Motivarea alegerii tehnologiilor folosite
+
+# Structura directoarelor si a fisierelor
 
 # Rularea aplicatiei
 

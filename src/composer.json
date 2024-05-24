@@ -1,0 +1,13 @@
+{
+    "name": "lightvision/todo_app",
+    "description": "Proiect Tehnologii web",
+    "type": "project",
+    "require": {
+        "slim/slim": "^4.13"
+    },
+    "authors": [
+        {
+            "name": "Marius-Florinel Ionel"
+        }
+    ]
+}
