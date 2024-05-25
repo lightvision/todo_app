@@ -2,12 +2,20 @@
     "name": "lightvision/todo_app",
     "description": "Proiect Tehnologii web",
     "type": "project",
-    "require": {
-        "slim/slim": "^4.13"
-    },
     "authors": [
         {
-            "name": "Marius-Florinel Ionel"
+            "name": "Marius-Florinel Ionel",
+            "email": "marius.ionel@s.utm.ro",
+            "homepage": "https://github.com/lightvision/todo_app"
         }
-    ]
+    ],
+    "require": {
+        "slim/slim": "3.*",
+        "slim/twig-view": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }
 }

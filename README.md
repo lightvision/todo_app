@@ -20,6 +20,28 @@ Atenție:  Media finală acordată fiecărui student va conţine următoarele co
 Aplicatia este disponibila la adresa ...
 
 ## Rularea cu Docker
+Aplicatia poate fi rulata si cu ajutorul Docker atata timp cat acesta este instalat pe calculatorul gazda.
+
+### Pornirea aplicatiei
+```
+docker compose up -d
+```
+
+### Oprirea aplicatiei
+```
+docker compose down
+```
+
+### Pornirea aplicatiei in faza de dezvoltare
+```
+docker compose up -d --watch
+```
+
+### Oprirea aplicatiei in faza de dezvoltare
+```
+docker compose down --rmi all
+```
+
 ### Porturi folosite
 
 ## Rularea pe un cont de gazduire care ofera LAMP

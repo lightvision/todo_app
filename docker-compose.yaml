@@ -1,7 +1,59 @@
 # version: '3.8'
+# Fisier de compunere a serviciilor necesare rularii aplicatiei cu ajutorul Docker
+# pentru detalii vezi README.md din acelasi dosar.
 services:
   apache:
     container_name: apache
     build:
-      context: ./docker_services/apache
-      dockerfile: Dockerfile
+      context: ./docker_services
+      dockerfile: apache.Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src/:/var/www/src
+      - ./docker_services/apache_vhost.conf:/usr/local/apache2/conf/apache_vhost.conf
+    develop:
+      watch:
+        - action: sync
+          path: ./src
+          target: /var/www/src
+    depends_on:
+      - php
+
+
+  php:
+    container_name: php
+    build:
+      context: ./docker_services
+      dockerfile: php.Dockerfile
+    volumes:
+      - ./src/:/var/www/src
+
+
+  mysql:
+    image: mariadb:10.11
+    container_name: mysql
+    # build:
+    #   context: ./docker_services
+    #   dockerfile: mysql.Dockerfile
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./docker_services/db_init.sh:/docker-entrypoint-initdb.d/init.sh:ro
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD:-rootpass123}
+    entrypoint: ["/docker-entrypoint-initdb.d/init.sh"]
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    depends_on:
+      - mysql
+    environment:
+      - PMA_HOST=mysql
+      # MYSQL_ROOT_PASSWORD=MYSQL_ROOT_PASSWORD
+    ports:
+      - "8081:80"
+
+
+volumes:
+  db_data:
